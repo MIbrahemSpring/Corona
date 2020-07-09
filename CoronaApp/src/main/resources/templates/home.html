@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Corona Report Application</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel='icon' href='img/favicon.ico' type='image/x-icon' />
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/Chart.min.css" />
+<link rel="stylesheet" href="css/corona.css" />
+<script type="text/javascript" src="js/all.min.js"></script>
+<script type="text/javascript" src="js/Chart.bundle.min.js"></script>
+</head>
+
+<body>
+
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col-10 m-auto">
+				<div class="jumbotron">
+					<h1>
+						<i class="fas fa-virus"></i> <i class="fas fa-head-side-mask"></i>
+						Covid-19 Report in Egypt at <small style="color: #EF5B25"
+							th:text="${coronaTotal.Date}"></small>
+					</h1>
+					<p class="lead">This is a simple statistics for Covid-19 report
+						in Egypt</p>
+					<hr class="my-4">
+					<div class="row">
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="card anime1">
+								<div class="card-body">
+									<h6 class="card-title">Total Cases</h6>
+									<span class="card-text" th:text="${coronaTotal.Confirmed}"></span>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="card anime2"
+								th:classappend="${deathsNotUpdated ? 'notUpdatedValue' : ''}">
+								<div class="card-body">
+									<h6 class="card-title">Total Deaths</h6>
+									<span class="card-text" th:text="${coronaTotal.deaths}"></span>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="card anime3"
+								th:classappend="${recoveredNotUpdated ? 'notUpdatedValue' : ''}">
+								<div class="card-body">
+									<h6 class="card-title">Total Recovered</h6>
+									<span class="card-text" th:text="${coronaTotal.Recovered}"></span>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="card anime4"
+								th:classappend="${activeNotUpdated ? 'notUpdatedValue' : ''}">
+								<div class="card-body">
+									<h6 class="card-title">Total Active</h6>
+									<span class="card-text" th:text="${coronaTotal.Active}"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-4">
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="card anime5">
+								<div class="card-body">
+									<h6 class="card-title">New Cases</h6>
+									<span class="card-text" th:text="${coronaNewest.newCases}"></span>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="card anime6">
+								<div class="card-body"
+									th:classappend="${deathsNotUpdated ? 'notUpdatedValue' : ''}">
+									<h6 class="card-title">New Deaths</h6>
+									<span class="card-text" th:text="${coronaNewest.newDeaths}"></span>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="card anime7"
+								th:classappend="${recoveredNotUpdated ? 'notUpdatedValue' : ''}">
+								<div class="card-body">
+									<h6 class="card-title">New Recovered</h6>
+									<span class="card-text" th:text="${coronaNewest.newRecovered}"></span>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row mb-5 mt-4">
+			<div class="col-10 m-auto">
+				<canvas id="totalConfirmed" width="400" height="200"></canvas>
+			</div>
+		</div>
+		<div class="row justify-content-md-center">
+			<div class="col-5">
+				<canvas id="totalDeaths" width="200" height="200"></canvas>
+			</div>
+			<div class="col-5">
+				<canvas id="totalRecovered" width="200" height="200"></canvas>
+			</div>
+		</div>
+		<div class="row mt-5">
+			<div class="col-10 m-auto">
+				<div class="jumbotron">
+					<h1>
+						Covid-19 Report WorldWide at <small style="color: #EF5B25"
+							th:text="${coronaTotal.Date}"></small>
+					</h1>
+					<p class="lead">This is a simple statistics for Covid-19 total
+						confirmed cases worldWide</p>
+					<hr class="my-4">
+					<div class="row justify-content-md-center">
+						<div class="col-lg-4 col-sm-6">
+							<div class="card">
+								<div class="card-body">
+									<h6 class="card-title">Total Cases</h6>
+									<span class="card-text"
+										th:text="${totalCasesWW.totalConfirmed}"></span>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-sm-6">
+							<div class="card">
+								<div class="card-body">
+									<h6 class="card-title">Total Deaths</h6>
+									<span class="card-text" th:text="${totalCasesWW.totalDeaths}"></span>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-sm-6">
+							<div class="card">
+								<div class="card-body">
+									<h6 class="card-title">Total Recovered</h6>
+									<span class="card-text"
+										th:text="${totalCasesWW.totalRecovered}"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<p class="footer mb-3">
+				Created by <span>Mohamed Ibrahem</span>
+			</p>
+		</div>
+	</div>
+	<script>
+	
+	// Total Confirmed Chart
+	var ctx = document.getElementById('totalConfirmed').getContext('2d');
+	var y = [[${totalConfirmed}]];
+
+	var chart = new Chart(ctx, {
+		type : 'line',
+		data : {
+		labels : [ 'January','February', 'March', 'April', 'May', 'June', 'July'],
+			datasets : [ {
+				label : 'Covid-19 chart for the total confirmed cases',
+				backgroundColor : 'rgba(239,91,37, .2)',
+				borderColor : 'rgb(239,91,37)',
+				pointBackgroundColor: 'rgba(0,0,0, .3)',
+				data : y
+			} ]
+		},
+
+		options : {},
+		
+	});
+	
+	// Total Deaths Chart
+	var ctx = document.getElementById('totalDeaths').getContext('2d');
+	var y = [[${totalDeaths}]];
+
+	var chart = new Chart(ctx, {
+		type : 'line',
+		data : {
+		labels : [ 'January','February', 'March', 'April', 'May', 'June', 'July'],
+			datasets : [ {
+				label : 'Covid-19 chart for the total deaths',
+				backgroundColor : 'rgba(239,91,37, .2)',
+				borderColor : 'rgb(239,91,37)',
+				pointBackgroundColor: 'rgba(0,0,0, .3)',
+				data : y
+			} ]
+		},
+
+		options : {},
+		
+	});
+	
+	// totalRecovered Chart
+	var ctx = document.getElementById('totalRecovered').getContext('2d');
+	var y = [[${totalRecovered}]];
+
+	var chart = new Chart(ctx, {
+		type : 'line',
+		data : {
+		labels : [ 'January','February', 'March', 'April', 'May', 'June', 'July'],
+			datasets : [ {
+				label : 'Covid-19 chart for the total recovered',
+				backgroundColor : 'rgba(239,91,37, .2)',
+				borderColor : 'rgb(239,91,37)',
+				pointBackgroundColor: 'rgba(0,0,0, .3)',
+				data : y
+			} ]
+		},
+
+		options : {},
+		
+	});
+	</script>
+</body>
+</html>

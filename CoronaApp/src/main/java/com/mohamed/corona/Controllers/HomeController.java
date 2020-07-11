@@ -34,6 +34,7 @@ public class HomeController {
 		attrs.put("totalConfirmed", _coronaService.getCoronaByMonth(Enums.Status.totalConfirmed.toString()));
 		attrs.put("totalDeaths", _coronaService.getCoronaByMonth(Enums.Status.totalDeaths.toString()));
 		attrs.put("totalRecovered", _coronaService.getCoronaByMonth(Enums.Status.totalRecovered.toString()));
+		attrs.put("totalNewCases", _coronaService.getCoronaByMonth(Enums.Status.totalNew.toString()));
 		attrs.put("totalCasesWW", _coronaService.getTotalWW());
 		attrs.put("deathsNotUpdated", latestConfirmed.isSourceDeathsEmpty());
 		attrs.put("activeNotUpdated", latestConfirmed.isSourceActiveEmpty());

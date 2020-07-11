@@ -1,0 +1,92 @@
+.custom-border {
+	border-bottom: 20px solid #ffe66e;
+}
+
+.corona-logo {
+	padding-left: 20%
+}
+
+.logo-name {
+	padding-left: 40px;
+	padding-bottom: 10px
+}
+
+.bow {
+	position: absolute;
+	top: 14%;
+}
+
+.card {
+	border: none;
+	width: 80% !important
+}
+
+.card-body {
+	padding: 6px 8px !important;
+	border-radius: 5px; -webkit-box-shadow : 1px 3px 10px 0px rgba( 219,
+	219, 219, 1);
+	-moz-box-shadow: 1px 3px 10px 0px rgba(219, 219, 219, 1);
+	box-shadow: 1px 3px 10px 0px rgba(219, 219, 219, 1);
+	-moz-box-shadow: 1px 3px 10px 0px rgba(219, 219, 219, 1);
+	box-shadow: 1px 3px 10px 0px rgba(219, 219, 219, 1);
+	-webkit-box-shadow: 1px 3px 10px 0px rgba(219, 219, 219, 1);
+}
+
+.wwStatistics .card-body {
+	box-shadow: 1px 3px 10px 0px rgb(187, 185, 185) !important;
+}
+
+.card-title {
+	font-size: 11px;
+	color: #6f6f6f;
+	margin-top: 6px;
+	margin-bottom: 20px;
+}
+
+.card-text {
+	color: #ef5b26;
+	font-weight: 500
+}
+
+.wwStatistics {
+	width: 50%;
+	height: 200px;
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.stats {
+/* 	position: absolute;
+	top: 0;
+	right: 5%; */
+}
+.footer{
+	background-color: #ffe66e
+}
+.footer p{
+	color: #5a5a5a;
+    font-family: fantasy;
+    padding-top:2px
+}
+
+.virus{
+	position: absolute;
+    right: 0%;
+    width: 400px;
+    top: 10%;
+    z-index: 3000;
+}
+.fa-heartbeat{
+	color: darkred
+}
+.dash{
+	height: 20px;
+    width: 25%;
+    background: #ffe66e;
+}
+.container-fluid{
+	padding-right: 0;
+	padding-top: 10px
+}
+    
